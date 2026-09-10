@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Multi Downloader — Design Token System
+   A bespoke dark-first palette inspired by premium desktop tools (Raycast,
+   Arc, Linear, CleanShot X): deep charcoal surfaces, a violet/cyan accent
+   duo, glassy elevation, and a technical monospace for stats.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --md-bg: #0a0a0e;
+  --md-bg-elevated: #101018;
+  --md-surface: #15151f;
+  --md-surface-2: #1b1b28;
+  --md-surface-3: #232332;
+  --md-border: #2a2a3a;
+  --md-border-strong: #38384c;
+
+  /* Text */
+  --md-text-primary: #f4f4f8;
+  --md-text-secondary: #a3a3b8;
+  --md-text-tertiary: #6d6d85;
+  --md-text-inverted: #0a0a0e;
+
+  /* Brand accent duo */
+  --md-accent: #7c5cff;
+  --md-accent-strong: #9d84ff;
+  --md-accent-soft: #7c5cff26;
+  --md-cyan: #35e6c3;
+  --md-cyan-soft: #35e6c326;
+
+  /* Semantic */
+  --md-success: #35d68a;
+  --md-success-soft: #35d68a1f;
+  --md-warning: #ffb545;
+  --md-warning-soft: #ffb5451f;
+  --md-danger: #ff5c72;
+  --md-danger-soft: #ff5c721f;
+  --md-info: #4fa3ff;
+  --md-info-soft: #4fa3ff1f;
+
+  /* Elevation shadows */
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --md-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --md-shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+  --md-shadow-glow: 0 0 0 1px var(--md-accent-soft), 0 8px 30px -8px var(--md-accent-soft);
+
+  /* Radii */
+  --md-radius-sm: 8px;
+  --md-radius-md: 12px;
+  --md-radius-lg: 18px;
+  --md-radius-xl: 24px;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --md-bg: #f3f3f8;
+  --md-bg-elevated: #ffffff;
+  --md-surface: #ffffff;
+  --md-surface-2: #f5f5fb;
+  --md-surface-3: #ececf6;
+  --md-border: #e2e2ee;
+  --md-border-strong: #cfcfe2;
+
+  --md-text-primary: #16161f;
+  --md-text-secondary: #55556b;
+  --md-text-tertiary: #86869c;
+  --md-text-inverted: #ffffff;
+
+  --md-shadow-sm: 0 1px 2px rgba(20, 20, 40, 0.06);
+  --md-shadow-md: 0 8px 24px rgba(20, 20, 40, 0.08);
+  --md-shadow-lg: 0 24px 60px rgba(20, 20, 40, 0.14);
+}
+
+@theme {
+  --color-md-bg: var(--md-bg);
+  --color-md-bg-elevated: var(--md-bg-elevated);
+  --color-md-surface: var(--md-surface);
+  --color-md-surface-2: var(--md-surface-2);
+  --color-md-surface-3: var(--md-surface-3);
+  --color-md-border: var(--md-border);
+  --color-md-border-strong: var(--md-border-strong);
+
+  --color-md-text-primary: var(--md-text-primary);
+  --color-md-text-secondary: var(--md-text-secondary);
+  --color-md-text-tertiary: var(--md-text-tertiary);
+  --color-md-text-inverted: var(--md-text-inverted);
+
+  --color-md-accent: var(--md-accent);
+  --color-md-accent-strong: var(--md-accent-strong);
+  --color-md-accent-soft: var(--md-accent-soft);
+  --color-md-cyan: var(--md-cyan);
+  --color-md-cyan-soft: var(--md-cyan-soft);
+
+  --color-md-success: var(--md-success);
+  --color-md-success-soft: var(--md-success-soft);
+  --color-md-warning: var(--md-warning);
+  --color-md-warning-soft: var(--md-warning-soft);
+  --color-md-danger: var(--md-danger);
+  --color-md-danger-soft: var(--md-danger-soft);
+  --color-md-info: var(--md-info);
+  --color-md-info-soft: var(--md-info-soft);
+
+  --font-sans: var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-loaded), ui-monospace, "SF Mono", monospace;
+
+  --radius-md-sm: var(--md-radius-sm);
+  --radius-md-md: var(--md-radius-md);
+  --radius-md-lg: var(--md-radius-lg);
+  --radius-md-xl: var(--md-radius-xl);
+}
+
+* {
+  border-color: var(--md-border);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--md-bg);
+  color: var(--md-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: var(--md-accent-soft);
+  color: var(--md-text-primary);
+}
+
+/* Custom scrollbars — subtle, desktop-app style */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-border-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--md-border-strong);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--md-text-tertiary);
+  background-clip: content-box;
+}
+
+/* Focus ring, consistent across all interactive elements */
+:focus-visible {
+  outline: 2px solid var(--md-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Skeleton shimmer */
+@keyframes md-shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+.md-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    var(--md-surface-2) 0px,
+    var(--md-surface-3) 40px,
+    var(--md-surface-2) 80px
+  );
+  background-size: 800px 100%;
+  animation: md-shimmer 1.6s linear infinite;
+}
+
+/* Fine noise-free glass panel utility */
+.md-glass {
+  background: color-mix(in srgb, var(--md-surface) 78%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.md-app-drag {
+  -webkit-app-region: drag;
+}
+.md-app-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Animated gradient text for the wordmark */
+.md-gradient-text {
+  background: linear-gradient(90deg, var(--md-accent-strong), var(--md-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

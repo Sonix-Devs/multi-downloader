@@ -1,0 +1,25 @@
+{
+  "name": "multi-downloader",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "containers": [
+    {
+      "class_name": "MultiDownloaderContainer",
+      "image": "./Dockerfile",
+      "max_instances": 1,
+      "instance_type": "standard-3"
+    }
+  ],
+
+  "durable_objects": {
+    "bindings": [
+      { "name": "MULTI_DOWNLOADER_CONTAINER", "class_name": "MultiDownloaderContainer" }
+    ]
+  },
+
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["MultiDownloaderContainer"] }
+  ]
+}
